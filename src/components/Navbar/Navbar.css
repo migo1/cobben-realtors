@@ -3,8 +3,8 @@
 /* Dropdown menu animation */
 .dropdown-enter {
   opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(-35px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .dropdown-enter-active {
@@ -29,8 +29,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-width: 150px;
   opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
   visibility: hidden;
 }
 

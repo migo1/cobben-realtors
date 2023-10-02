@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faPhoneFlip,
+  faPhoneAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css"; 
 
 const Navbar = () => {
@@ -39,75 +43,93 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between bg-white px-4 py-2 shadow-md">
-      <div className="flex items-center">
-        {/* <img src="/logo.png" alt="Quarter logo" className="h-8 w-8 mr-2" /> */}
-        <h1 className="text-red-600 font-bold text-xl">Quarter</h1>
-      </div>
-      <div className="flex items-center">
-        <ul className="flex space-x-4">
-          {navItems.map((item) => (
-            <li key={item.name} className="dropdown-container">
-              {item.subItems ? (
-                <div
-                  className={`relative group cursor-pointer ${
-                    (item.name === "Services" && isServicesDropdownOpen) ||
-                    (item.name === "Properties" && isPropertiesDropdownOpen)
-                      ? "dropdown-enter-active"
-                      : ""
-                  }`}
-                  onMouseEnter={() => {
-                    if (item.name === "Services") {
-                      toggleServicesDropdown();
-                    } else if (item.name === "Properties") {
-                      togglePropertiesDropdown();
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    if (item.name === "Services") {
-                      toggleServicesDropdown();
-                    } else if (item.name === "Properties") {
-                      togglePropertiesDropdown();
-                    }
-                  }}
-                >
-                  <span className="text-gray-700 group-hover:text-red-600">
-                    {item.name}
-                    <FontAwesomeIcon icon={faPlus} className="h-3 w-3 ml-2" />
-                  </span>
-                  {((item.name === "Services" && isServicesDropdownOpen) ||
-                    (item.name === "Properties" &&
-                      isPropertiesDropdownOpen)) && (
-                    <ul className="dropdown-menu">
-                      {item.subItems.map((subItem) => (
-                        <li key={subItem.name}>
-                          <a
-                            href={subItem.link}
-                            className="block px-4 py-2 text-gray-700 hover:text-red-600"
-                          >
-                            {subItem.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              ) : (
-                <a
-                  href={item.link}
-                  className="text-gray-700 hover:text-red-600"
-                >
-                  <span className="flex items-center">
-                    {item.name}
-                    <FontAwesomeIcon icon={faPlus} className="h-3 w-3 ml-2" />
-                  </span>
-                </a>
-              )}
-            </li>
-          ))}
+    <>
+      <div className="bg-red-600 py-2 ">
+        <ul className="flex px-48 justify-evenly">
+          <li className="text-white flex space-x-8 items-center">
+            <FontAwesomeIcon icon={faPhoneAlt} className="h-4 w-4 ml-2" />
+            <p>Kilimani Ofice: +254........</p>
+          </li>
+          <li className="text-white flex space-x-8 items-center">
+            <FontAwesomeIcon icon={faPhoneAlt} className="h-4 w-4 ml-2" />
+            <p>Westlands Ofice: +254........</p>
+          </li>
+          <li className="text-white flex space-x-8 items-center">
+            <FontAwesomeIcon icon={faPhoneAlt} className="h-4 w-4 ml-2" />
+            <p>Mombasa Ofice: +254........</p>
+          </li>
         </ul>
       </div>
-    </nav>
+      <nav className="flex items-center justify-between bg-white px-12 py-6 shadow-md">
+        <div className="flex items-center">
+          {/* <img src="/logo.png" alt="Quarter logo" className="h-8 w-8 mr-2" /> */}
+          <h1 className="text-red-600 font-bold text-xl">Cobben Realtors</h1>
+        </div>
+        <div className="flex items-center">
+          <ul className="flex space-x-12">
+            {navItems.map((item) => (
+              <li key={item.name} className="dropdown-container text-xl">
+                {item.subItems ? (
+                  <div
+                    className={`relative group cursor-pointer ${
+                      (item.name === "Services" && isServicesDropdownOpen) ||
+                      (item.name === "Properties" && isPropertiesDropdownOpen)
+                        ? "dropdown-enter-active"
+                        : ""
+                    }`}
+                    onMouseEnter={() => {
+                      if (item.name === "Services") {
+                        toggleServicesDropdown();
+                      } else if (item.name === "Properties") {
+                        togglePropertiesDropdown();
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      if (item.name === "Services") {
+                        toggleServicesDropdown();
+                      } else if (item.name === "Properties") {
+                        togglePropertiesDropdown();
+                      }
+                    }}
+                  >
+                    <span className="flex text-gray-700 group-hover:text-red-600 items-center">
+                      {item.name}
+                      <FontAwesomeIcon icon={faPlus} className="h-3 w-3 ml-2" />
+                    </span>
+                    {((item.name === "Services" && isServicesDropdownOpen) ||
+                      (item.name === "Properties" &&
+                        isPropertiesDropdownOpen)) && (
+                      <ul className="dropdown-menu">
+                        {item.subItems.map((subItem) => (
+                          <li key={subItem.name}>
+                            <a
+                              href={subItem.link}
+                              className="block px-4 py-2 text-gray-700 hover:text-red-600"
+                            >
+                              {subItem.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ) : (
+                  <a
+                    href={item.link}
+                    className="text-gray-700 hover:text-red-600 "
+                  >
+                    <span className="flex items-center">
+                      {item.name}
+                      <FontAwesomeIcon icon={faPlus} className="h-3 w-3 ml-2" />
+                    </span>
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    </>
   );
 };
 
