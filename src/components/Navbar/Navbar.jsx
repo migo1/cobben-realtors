@@ -2,7 +2,6 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
-  // faPhoneAlt,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
@@ -151,7 +150,6 @@ const Navbar = () => {
                   >
                     <span className="flex items-center">
                       {item.name}
-                      {/* <FontAwesomeIcon icon={faPlus} className="h-3 w-3 ml-2" /> */}
                     </span>
                   </a>
                 )}

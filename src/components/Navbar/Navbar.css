@@ -129,6 +129,11 @@
       display: none;
     }
 
+     h1.text-dark-cool-blue.font-bold.text-2xl {
+      display: block;
+      font-size: 18px;
+    }
+
      img.h-8.w-8.mr-2 {
       width: 2rem;
       height: 2rem;
