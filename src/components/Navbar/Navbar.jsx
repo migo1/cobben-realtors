@@ -35,7 +35,9 @@ const Navbar = () => {
   const [isLandDropdownOpen, setIsLandDropdownOpen] = useState(false);
   const [isPropertiesDropdownOpen, setIsPropertiesDropdownOpen] =
     useState(false);
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+  
   const toggleLandDropdown = () => {
     setIsLandDropdownOpen(!isLandDropdownOpen);
   };
@@ -44,6 +46,12 @@ const Navbar = () => {
     setIsPropertiesDropdownOpen(!isPropertiesDropdownOpen);
   };
 
+    const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen);
+      setIsOverlayVisible(!isOverlayVisible);
+    };
+
+    
   return (
     <>
       <div className="flex justify-between bg-cool-blue py-2 px-44">
@@ -82,7 +90,6 @@ const Navbar = () => {
             className="h-4 w-4  ml-2 bg-cool-blue"
           />
         </div>
-
       </div>
       <nav className="flex items-center justify-between px-44 py-5 shadow-md">
         <div className="flex items-center">
@@ -95,6 +102,25 @@ const Navbar = () => {
             Cobben Realtors
           </h1>
         </div>
+        <button
+          className={`hamburger-button ${isMenuOpen ? "active" : ""}`}
+          onClick={() => toggleMenu()}
+        >
+          <p>button</p>
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+        </button>
+        {isOverlayVisible && (
+          <div className="overlay" onClick={() => toggleMenu()}>
+            {/* Mobile Menu */}
+            <div className={`mobile-menu ${isMenuOpen ? "active" : ""}`}>
+              {/* ... (your mobile menu content) */}
+              <p>test</p>
+     
+            </div>
+          </div>
+        )}
         <div className="flex items-center desktop-view">
           <ul className="flex ">
             {navItems.map((item) => (
@@ -148,9 +174,7 @@ const Navbar = () => {
                     href={item.link}
                     className="text-dark-cool-blue hover:text-orange-600 "
                   >
-                    <span className="flex items-center">
-                      {item.name}
-                    </span>
+                    <span className="flex items-center">{item.name}</span>
                   </a>
                 )}
               </li>
