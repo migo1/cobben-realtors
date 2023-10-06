@@ -28,6 +28,10 @@
   visibility: hidden;
 }
 
+.hamburger-button {
+  display: none;
+}
+
 .dropdown-container:hover .dropdown-menu {
   opacity: 1;
   transform: translateY(0);
@@ -35,6 +39,9 @@
 }
 
 @media (max-width: 1380px) {
+  .hamburger-button {
+    display: none;
+  }
   h1.text-dark-cool-blue.font-bold.text-2xl {
     font-size: 18px;
     line-height: 25px;
@@ -56,6 +63,9 @@
 }
 
 @media (max-width: 1150px) {
+  .hamburger-button {
+    display: none;
+  }
   h1.text-dark-cool-blue.font-bold.text-2xl {
     font-size: 16px;
     line-height: 25px;
@@ -76,6 +86,9 @@
   }
 
   @media (max-width: 1050px) {
+    .hamburger-button {
+      display: none;
+    }
     h1.text-dark-cool-blue.font-bold.text-2xl {
       font-size: 15px;
       line-height: 25px;
@@ -98,6 +111,10 @@
 
   @media (max-width: 950px) {
     h1.text-dark-cool-blue.font-bold.text-2xl {
+      display: none;
+    }
+
+    .hamburger-button {
       display: none;
     }
 
@@ -163,7 +180,5 @@
       position: relative;
       top: 50px;
     }
-
-    
   }
 }
