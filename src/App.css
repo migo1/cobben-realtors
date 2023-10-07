@@ -4,11 +4,15 @@
 
 .overlay {
   position: fixed;
-  top: 0;
+  top: 85px;
   left: 0;
   width: 70%;
   height: 100%;
-  background-color: rgba(173, 216, 230, 0.7); /* Light blue color with some opacity */
-  z-index: 999; /* Ensure it's above other content */
-  /* display: none; Initially hidden */
+  background-color: #0B2C3D; 
+  z-index: 999; 
+  display: none; 
+}
+
+.overlay.active {
+  display: block;
 }
