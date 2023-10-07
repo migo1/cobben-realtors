@@ -2,6 +2,9 @@ import { useState } from "react";
 import "./Navbar.css";
 import NavItem from "./NavItem";
 import FirstNav from "./FirstNav";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+
 
 const Navbar = () => {
   const navItems = [
@@ -64,16 +67,74 @@ const Navbar = () => {
           className={`hamburger-button ${isMenuOpen ? "active" : ""}`}
           onClick={() => toggleMenu()}
         >
-          <p>button</p>
           <div className="line"></div>
           <div className="line"></div>
           <div className="line"></div>
         </button>
         {isOverlayVisible && (
-          <div className="overlay" onClick={() => toggleMenu()}>
+          <div
+            className={`overlay ${isMenuOpen ? "active" : ""}`}
+            // onClick={() => toggleMenu()}
+          >
             {/* Mobile Menu */}
             <div className={`mobile-menu ${isMenuOpen ? "active" : ""}`}>
-              {/* ... (your mobile menu content) */}
+              <ul className="mobile-nav-list bg-cool-blue">
+                {navItems.map((item) => (
+                  <li className="mobile-menu-item " key={item.name}>
+                    {item.subItems ? (
+                      <div
+                        className={`mobile-sub-item cursor-pointer ${
+                          (item.name === "Land" && isLandDropdownOpen) ||
+                          (item.name === "Properties" &&
+                            isPropertiesDropdownOpen)
+                            ? "dropdown-enter-active"
+                            : ""
+                        }`}
+                        onClick={() => {
+                          if (item.name === "Land") {
+                            toggleLandDropdown();
+                          } else if (item.name === "Properties") {
+                            togglePropertiesDropdown();
+                          }
+                        }}
+                      >
+                        <span className="flex justify-between group-hover:text-orange-600 items-center bg-cool-blue text-white">
+                          {item.name}
+                          <FontAwesomeIcon
+                            icon={faAngleDown}
+                            className="h-4 w-4 ml-2 bg-cool-blue "
+                          />
+                        </span>
+                        {((item.name === "Land" && isLandDropdownOpen) ||
+                          (item.name === "Properties" &&
+                            isPropertiesDropdownOpen)) && (
+                          <ul className="mobile-sub-list">
+                            {item.subItems.map((subItem) => (
+                              <li className="mobile-list" key={subItem.name}>
+                                <a
+                                  href={subItem.link}
+                                  className="mobile-title block px-4 py-2 text-dark-cool-blue hover:text-orange-600"
+                                >
+                                  {subItem.name}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ) : (
+                      <a
+                        href={item.link}
+                        className="text-dark-cool-blue hover:text-orange-600 "
+                      >
+                        <span className="flex items-center bg-cool-blue text-white">
+                          {item.name}
+                        </span>
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         )}
